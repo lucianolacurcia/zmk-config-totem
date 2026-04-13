@@ -112,7 +112,7 @@ layers:
   - \
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - '&gif'
+  - {t: ▽, type: trans}
   - ADJ
   - {t: ▽, type: trans}
   - {t: PP, type: held}
