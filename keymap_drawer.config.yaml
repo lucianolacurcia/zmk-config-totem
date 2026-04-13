@@ -1,0 +1,12 @@
+draw_config:
+  key_h: 56
+  combo_h: 20
+  combo_w: 24
+  key_w: 60
+  n_columns: 1
+  separate_combo_diagrams: false
+  combo_diagrams_scale: 2
+parse_config:
+  raw_binding_map:
+    "&bootloader": "BOOT"
+    "&sys_reset": "RST"
