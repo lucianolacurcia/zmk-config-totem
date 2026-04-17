@@ -32,3 +32,20 @@ TOTEM is a 38 key column-staggered split keyboard running [ZMK](https://zmk.dev/
 - the keyboard should now appear as a mass storage device
 - drag'n'drop the `totem_left-seeeduino_xiao_ble-zmk.uf2` file from the archive onto the storage device
 - repeat this process with the right half and the `totem_right-seeeduino_xiao_ble-zmk.uf2` file.
+
+## 🎮 **Real-Time Keyboard Visualizer**
+
+This config now includes **real-time keyboard visualization** support! The firmware sends live key press data to a companion desktop app that shows:
+
+- ✅ **Real-time key highlighting** - See keys light up as you type
+- ✅ **Layer switching visualization** - Visual feedback of active layers  
+- ✅ **Transparent overlay** - Floats over other applications
+- ✅ **Stateless protocol** - No drift between firmware and visualizer
+
+**Features:**
+- **Universal keymap support** via keymap-drawer integration
+- **Cross-platform** desktop app (Linux/Windows/macOS)
+- **Auto-configuration** from your ZMK keymap
+- **Performance optimized** 60fps rendering with minimal latency
+
+The companion app is available at: [keyboard-visualizer](https://github.com/lucianolacurcia/keyboard-visualizer)
