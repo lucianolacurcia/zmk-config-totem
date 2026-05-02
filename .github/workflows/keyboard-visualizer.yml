@@ -35,6 +35,23 @@ jobs:
           set -e
           mkdir -p visualizer
           echo "🔍 Processing keymap-drawer output..."
+          normalize_keyboard_name() {
+            local val="$1"
+
+            # quitar llaves
+            val="${val#\{}"
+            val="${val%\}}"
+
+            # si contiene :
+            if [[ "$val" == *:* ]]; then
+              val="${val#*:}"
+            fi
+
+            # trim espacios
+            val="$(echo "$val" | xargs)"
+
+            echo "$val"
+          }
 
           # Find generated YAML file from keymap-drawer workflow
           YAML_FILE=""
@@ -94,6 +111,8 @@ jobs:
 
             if [ -n "$KB_NAME" ]; then
               echo "🔍 Trying keymap-drawer extras for: $KB_NAME"
+              KB_NAME=$(normalize_keyboard_name "$KB_NAME")
+              echo ">> post normalization: $KB_NAME"
 
               # Try exact match first
               EXTRA_URL="https://raw.githubusercontent.com/caksoylar/keymap-drawer/main/resources/extra_layouts/$KB_NAME.json"
