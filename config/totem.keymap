@@ -55,7 +55,7 @@
         // CONFIG layer toggle - DEL + SPACE (thumb 1 + thumb 3)
         combo_config_toggle {
             timeout-ms = <50>;
-            key-positions = <30 32>;
+            key-positions = <32 34>;
             bindings = <&to CONFIG>;
         };
 
