@@ -300,12 +300,12 @@ path.combo {
 <text x="740" y="88" class="combo tap"><tspan style="font-size: 78%">BACKSPACE</tspan></text>
 </g>
 <g class="combo combopos-2">
-<path d="M504,230 l230,-6" class="combo"/>
-<path d="M504,230 l-230,6" class="combo"/>
-<rect rx="6" ry="6" x="492" y="220" width="24" height="20" class="combo"/>
+<path d="M318,253 l-44,-12" class="combo"/>
+<path d="M318,253 l44,12" class="combo"/>
+<rect rx="6" ry="6" x="306" y="243" width="24" height="20" class="combo"/>
 <a href="#CONFIG">
-<text x="504" y="230" class="combo tap layer-activator">CONFIG</text>
-</a><text x="504" y="238" class="combo hold">toggle</text>
+<text x="318" y="253" class="combo tap layer-activator">CONFIG</text>
+</a><text x="318" y="261" class="combo hold">toggle</text>
 </g>
 </g>
 </g>
@@ -468,12 +468,12 @@ path.combo {
 <text x="740" y="88" class="combo tap"><tspan style="font-size: 78%">BACKSPACE</tspan></text>
 </g>
 <g class="combo combopos-1">
-<path d="M504,230 l230,-6" class="combo"/>
-<path d="M504,230 l-230,6" class="combo"/>
-<rect rx="6" ry="6" x="492" y="220" width="24" height="20" class="combo"/>
+<path d="M318,253 l-44,-12" class="combo"/>
+<path d="M318,253 l44,12" class="combo"/>
+<rect rx="6" ry="6" x="306" y="243" width="24" height="20" class="combo"/>
 <a href="#CONFIG">
-<text x="504" y="230" class="combo tap layer-activator">CONFIG</text>
-</a><text x="504" y="238" class="combo hold">toggle</text>
+<text x="318" y="253" class="combo tap layer-activator">CONFIG</text>
+</a><text x="318" y="261" class="combo hold">toggle</text>
 </g>
 </g>
 </g>
@@ -636,12 +636,12 @@ path.combo {
 <text x="740" y="88" class="combo tap"><tspan style="font-size: 78%">BACKSPACE</tspan></text>
 </g>
 <g class="combo combopos-1">
-<path d="M504,230 l230,-6" class="combo"/>
-<path d="M504,230 l-230,6" class="combo"/>
-<rect rx="6" ry="6" x="492" y="220" width="24" height="20" class="combo"/>
+<path d="M318,253 l-44,-12" class="combo"/>
+<path d="M318,253 l44,12" class="combo"/>
+<rect rx="6" ry="6" x="306" y="243" width="24" height="20" class="combo"/>
 <a href="#CONFIG">
-<text x="504" y="230" class="combo tap layer-activator">CONFIG</text>
-</a><text x="504" y="238" class="combo hold">toggle</text>
+<text x="318" y="253" class="combo tap layer-activator">CONFIG</text>
+</a><text x="318" y="261" class="combo hold">toggle</text>
 </g>
 </g>
 </g>
@@ -818,12 +818,12 @@ path.combo {
 <text x="740" y="88" class="combo tap"><tspan style="font-size: 78%">BACKSPACE</tspan></text>
 </g>
 <g class="combo combopos-2">
-<path d="M504,230 l230,-6" class="combo"/>
-<path d="M504,230 l-230,6" class="combo"/>
-<rect rx="6" ry="6" x="492" y="220" width="24" height="20" class="combo"/>
+<path d="M318,253 l-44,-12" class="combo"/>
+<path d="M318,253 l44,12" class="combo"/>
+<rect rx="6" ry="6" x="306" y="243" width="24" height="20" class="combo"/>
 <a href="#CONFIG">
-<text x="504" y="230" class="combo tap layer-activator">CONFIG</text>
-</a><text x="504" y="238" class="combo hold">toggle</text>
+<text x="318" y="253" class="combo tap layer-activator">CONFIG</text>
+</a><text x="318" y="261" class="combo hold">toggle</text>
 </g>
 </g>
 </g>
@@ -1013,12 +1013,12 @@ path.combo {
 <text x="740" y="88" class="combo tap"><tspan style="font-size: 78%">BACKSPACE</tspan></text>
 </g>
 <g class="combo combopos-1">
-<path d="M504,230 l230,-6" class="combo"/>
-<path d="M504,230 l-230,6" class="combo"/>
-<rect rx="6" ry="6" x="492" y="220" width="24" height="20" class="combo"/>
+<path d="M318,253 l-44,-12" class="combo"/>
+<path d="M318,253 l44,12" class="combo"/>
+<rect rx="6" ry="6" x="306" y="243" width="24" height="20" class="combo"/>
 <a href="#CONFIG">
-<text x="504" y="230" class="combo tap layer-activator">CONFIG</text>
-</a><text x="504" y="238" class="combo hold">toggle</text>
+<text x="318" y="253" class="combo tap layer-activator">CONFIG</text>
+</a><text x="318" y="261" class="combo hold">toggle</text>
 </g>
 </g>
 </g>
@@ -1210,12 +1210,12 @@ path.combo {
 <text x="740" y="88" class="combo tap"><tspan style="font-size: 78%">BACKSPACE</tspan></text>
 </g>
 <g class="combo combopos-1">
-<path d="M504,230 l230,-6" class="combo"/>
-<path d="M504,230 l-230,6" class="combo"/>
-<rect rx="6" ry="6" x="492" y="220" width="24" height="20" class="combo"/>
+<path d="M318,253 l-44,-12" class="combo"/>
+<path d="M318,253 l44,12" class="combo"/>
+<rect rx="6" ry="6" x="306" y="243" width="24" height="20" class="combo"/>
 <a href="#CONFIG">
-<text x="504" y="230" class="combo tap layer-activator">CONFIG</text>
-</a><text x="504" y="238" class="combo hold">toggle</text>
+<text x="318" y="253" class="combo tap layer-activator">CONFIG</text>
+</a><text x="318" y="261" class="combo hold">toggle</text>
 </g>
 <g class="combo combopos-2">
 <rect rx="6" ry="6" x="99" y="77" width="24" height="20" class="combo"/>
