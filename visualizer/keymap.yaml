@@ -1,0 +1,250 @@
+layout: {zmk_keyboard: totem}
+layers:
+  BASE:
+  - Q
+  - W
+  - E
+  - R
+  - T
+  - Y
+  - U
+  - I
+  - O
+  - P
+  - A
+  - S
+  - D
+  - F
+  - G
+  - H
+  - J
+  - K
+  - L
+  - ;
+  - TAB
+  - Z
+  - X
+  - C
+  - V
+  - B
+  - N
+  - M
+  - ','
+  - .
+  - /
+  - ENTER
+  - {t: DEL, h: NUMS}
+  - {t: TAB, h: WM}
+  - {t: SPACE, h: SYMS}
+  - {t: RET, h: SYMS}
+  - {t: ESC, h: WM}
+  - {t: BSPC, h: NUMS}
+  NUMS:
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  - '5'
+  - '6'
+  - '7'
+  - '8'
+  - '9'
+  - '0'
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {type: held}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  SYMS:
+  - '!'
+  - '@'
+  - '#'
+  - $
+  - '%'
+  - ^
+  - '&'
+  - '*'
+  - (
+  - )
+  - '-'
+  - '='
+  - '['
+  - ']'
+  - ''''
+  - ','
+  - .
+  - ':'
+  - \
+  - '"'
+  - {t: ▽, type: trans}
+  - _
+  - +
+  - '{'
+  - '}'
+  - <
+  - '>'
+  - '|'
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - '?'
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {type: held}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  WM:
+  - Gui+1
+  - Gui+2
+  - Gui+3
+  - Gui+4
+  - Gui+5
+  - Gui+6
+  - Gui+7
+  - Gui+8
+  - Gui+9
+  - Gui+0
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - Gui+D
+  - Gui+F
+  - Gui+T
+  - Gui+H
+  - Gui+J
+  - Gui+K
+  - Gui+L
+  - {t: ▽, type: trans}
+  - WMS
+  - VOL DN
+  - MUTE
+  - VOL UP
+  - PREV
+  - PP
+  - NEXT
+  - BRI DN
+  - BRI UP
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - WMS
+  - {t: ▽, type: trans}
+  - {type: held}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  WMS:
+  - Sft+Gui+1
+  - Sft+Gui+2
+  - Sft+Gui+3
+  - Sft+Gui+4
+  - Sft+Gui+5
+  - Sft+Gui+6
+  - Sft+Gui+7
+  - Sft+Gui+8
+  - Sft+Gui+9
+  - Sft+Gui+0
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - Sft+Gui+H
+  - Sft+Gui+J
+  - Sft+Gui+K
+  - Sft+Gui+L
+  - {t: ▽, type: trans}
+  - {type: held}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {type: held}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  CONFIG:
+  - RST
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - BOOT
+  - BOOT
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - RST
+  - {t: BT, h: '0'}
+  - {t: BT, h: '1'}
+  - {t: BT, h: '2'}
+  - {t: BT, h: '3'}
+  - BT CLR
+  - BT CLR
+  - {t: BT, h: '3'}
+  - {t: BT, h: '2'}
+  - {t: BT, h: '1'}
+  - {t: BT, h: '0'}
+  - {t: ▽, type: trans}
+  - OUT TOG
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - OUT TOG
+  - {t: ▽, type: trans}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+combos:
+- p: [0, 1]
+  k: ESC
+  l: [BASE]
+- p: [0, 1]
+  k: Gui+Q
+  l: [WM]
+- p: [8, 9]
+  k: BACKSPACE
+- p: [32, 34]
+  k: {t: CONFIG, h: toggle}
+- p: [0, 1]
+  k: {t: BASE, h: toggle}
+  l: [CONFIG]
