@@ -16,3 +16,32 @@ jobs:
       keymap_patterns: "config/*.keymap"
       config_path: "keymap_drawer.config.yaml"
       output_folder: "keymap-drawer"
+
+  # Preparar archivos para keyboard-visualizer
+  prepare-visualizer:
+    runs-on: ubuntu-latest
+    needs: draw
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate visualizer files
+        run: |
+          mkdir -p visualizer
+          echo "📁 Preparing files for keyboard-visualizer..."
+          # Copiar YAML generado
+          cp keymap-drawer/totem.yaml visualizer/
+          # Descargar layout físico
+          curl -o visualizer/totem.json \
+            https://raw.githubusercontent.com/caksoylar/keymap-drawer/main/resources/extra_layouts/totem.json
+          echo "✅ Files ready in visualizer/ folder"
+
+      - name: Commit visualizer files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add visualizer/
+          git diff --staged --quiet || (git commit -m "🎹 Update keyboard visualizer files" && git push)
