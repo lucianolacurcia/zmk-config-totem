@@ -97,7 +97,7 @@ jobs:
 
               # Try exact match first
               EXTRA_URL="https://raw.githubusercontent.com/caksoylar/keymap-drawer/main/resources/extra_layouts/$KB_NAME.json"
-              echo "$EXRTA_URL"
+              echo "$EXTRA_URL"
               if curl -s -f "$EXTRA_URL" -o "$LAYOUT_FILE"; then
                 echo "✅ Found $KB_NAME.json in keymap-drawer extras"
               else
