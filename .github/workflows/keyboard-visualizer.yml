@@ -1,28 +1,12 @@
 name: Generate Keyboard Visualizer Files
 on:
   workflow_dispatch:
-  push:
-    paths:
-      - "config/*.keymap"
-      - "config/*.dtsi"
-      - "keymap_drawer.config.yaml"
-      - "*.keymap"  # QMK keymaps
+  push:  # Trigger on any push - universal compatibility
 
 jobs:
-  # Generate keymap YAML using keymap-drawer (works for both ZMK and QMK)
-  draw:
-    uses: caksoylar/keymap-drawer/.github/workflows/draw-zmk.yml@main
-    permissions:
-      contents: write
-    with:
-      keymap_patterns: "config/*.keymap"  # ZMK pattern
-      config_path: "keymap_drawer.config.yaml"
-      output_folder: "keymap-drawer"
-
-  # Detect keyboard and generate visualizer files
+  # Generate visualizer files for both ZMK and QMK
   prepare-visualizer:
     runs-on: ubuntu-latest
-    needs: draw
     permissions:
       contents: write
     steps:
@@ -33,32 +17,78 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y curl jq
+          sudo apt-get install -y curl jq python3 python3-pip
+          pip3 install keymap-drawer
 
-      - name: Detect keyboard and generate layout file
+      - name: Detect keyboard type and generate files
         run: |
           set -e
           mkdir -p visualizer
-          echo "🔍 Detecting keyboard type and layout..."
+          echo "🔍 Auto-detecting keyboard type..."
 
-          # Find generated YAML file to detect keyboard
-          YAML_FILE=""
-          if [ -d "keymap-drawer" ]; then
-            YAML_FILE=$(find keymap-drawer -name "*.yaml" -type f | head -1)
-          fi
+          # Detect keyboard type by files present
+          KEYMAP_FILE=""
+          KEYBOARD_TYPE=""
 
-          if [ -z "$YAML_FILE" ] || [ ! -f "$YAML_FILE" ]; then
-            echo "❌ No YAML file found in keymap-drawer output"
-            echo "Available files:"
-            find keymap-drawer -type f 2>/dev/null || echo "No keymap-drawer directory"
+          # Check for ZMK (.keymap files)
+          if [ -n "$(find . -name "*.keymap" -type f 2>/dev/null)" ]; then
+            KEYBOARD_TYPE="ZMK"
+            KEYMAP_FILE=$(find . -name "*.keymap" -type f | head -1)
+            echo "🔍 Detected: ZMK keyboard (.keymap files found)"
+            echo "📄 Using keymap: $KEYMAP_FILE"
+
+          # Check for QMK (keymap.c files)
+          elif [ -n "$(find . -name "keymap.c" -type f 2>/dev/null)" ]; then
+            KEYBOARD_TYPE="QMK"
+            KEYMAP_FILE=$(find . -name "keymap.c" -type f | head -1)
+            echo "🔍 Detected: QMK keyboard (keymap.c files found)"
+            echo "📄 Using keymap: $KEYMAP_FILE"
+
+          else
+            echo "❌ No keymap files found (.keymap or keymap.c)"
+            echo "📁 Repository contents:"
+            find . -type f -name "*keymap*" -o -name "*.keymap" -o -name "*.c" | head -10
             exit 1
           fi
 
-          echo "📄 Found keymap file: $YAML_FILE"
+          # Generate YAML using keymap-drawer
+          echo "📝 Generating keymap YAML..."
+          if [ "$KEYBOARD_TYPE" = "ZMK" ]; then
+            keymap draw "$KEYMAP_FILE" -o /tmp/keymap.yaml --config keymap_drawer.config.yaml 2>/dev/null || \
+            keymap draw "$KEYMAP_FILE" -o /tmp/keymap.yaml 2>/dev/null || {
+              echo "❌ Failed to parse ZMK keymap with keymap-drawer"
+              exit 1
+            }
 
-          # Extract keyboard info from YAML
-          QMK_KB=$(grep "qmk_keyboard:" "$YAML_FILE" | cut -d' ' -f2- | tr -d '"' || echo "")
-          ZMK_KB=$(grep "zmk_keyboard:" "$YAML_FILE" | cut -d' ' -f2- | tr -d '"' || echo "")
+          elif [ "$KEYBOARD_TYPE" = "QMK" ]; then
+            # For QMK, we need to determine the keyboard name from the keymap.c path
+            # Usually in: keyboards/keyboard_name/keymaps/keymap_name/keymap.c
+            KEYMAP_DIR=$(dirname "$KEYMAP_FILE")
+            KB_PATH=$(echo "$KEYMAP_DIR" | sed 's|keyboards/||' | sed 's|/keymaps.*||')
+
+            if [ -n "$KB_PATH" ]; then
+              echo "🔍 Detected QMK keyboard: $KB_PATH"
+              keymap draw -k "$KB_PATH" "$KEYMAP_FILE" -o /tmp/keymap.yaml 2>/dev/null || {
+                echo "❌ Failed to parse QMK keymap. Please specify qmk_keyboard in your keymap"
+                exit 1
+              }
+            else
+              echo "❌ Could not determine QMK keyboard name from path: $KEYMAP_FILE"
+              echo "💡 Please ensure your keymap.c has 'qmk_keyboard:' comment or is in standard QMK path"
+              exit 1
+            fi
+          fi
+
+          if [ ! -f "/tmp/keymap.yaml" ]; then
+            echo "❌ Failed to generate keymap YAML"
+            exit 1
+          fi
+
+          echo "✅ Generated keymap YAML"
+
+          # Extract keyboard info from generated YAML
+          QMK_KB=$(grep "qmk_keyboard:" /tmp/keymap.yaml | cut -d' ' -f2- | tr -d '"' | tr -d "'" || echo "")
+          ZMK_KB=$(grep "zmk_keyboard:" /tmp/keymap.yaml | cut -d' ' -f2- | tr -d '"' | tr -d "'" || echo "")
 
           echo "🔍 QMK keyboard: '$QMK_KB'"
           echo "🔍 ZMK keyboard: '$ZMK_KB'"
@@ -105,28 +135,24 @@ jobs:
               if curl -s -f "$EXTRA_URL" -o "$LAYOUT_FILE"; then
                 echo "✅ Found $KB_NAME.json in keymap-drawer extras"
               else
-                # Try common variations
-                echo "❌ $KB_NAME.json not found, trying variations..."
-
-                # List available layouts for debugging
-                echo "📋 Available layouts in keymap-drawer extras:"
+                echo "❌ $KB_NAME.json not found in keymap-drawer extras"
+                echo "📋 Available layouts:"
                 curl -s "https://api.github.com/repos/caksoylar/keymap-drawer/contents/resources/extra_layouts" | \
                   jq -r '.[].name' | head -10
 
-                echo "❌ No layout found for keyboard: $KB_NAME"
                 echo "💡 Please check available layouts at:"
                 echo "   https://github.com/caksoylar/keymap-drawer/tree/main/resources/extra_layouts"
                 exit 1
               fi
             else
               echo "❌ No keyboard name found in YAML file"
-              echo "💡 Please ensure your keymap YAML has either 'qmk_keyboard:' or 'zmk_keyboard:' field"
+              echo "💡 Please ensure your keymap has qmk_keyboard or zmk_keyboard specified"
               exit 1
             fi
           fi
 
           # Copy YAML file with standard name
-          cp "$YAML_FILE" visualizer/keymap.yaml
+          cp /tmp/keymap.yaml visualizer/keymap.yaml
 
           echo "✅ Files ready in visualizer/ folder:"
           ls -la visualizer/
