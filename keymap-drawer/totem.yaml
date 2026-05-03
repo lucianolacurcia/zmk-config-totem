@@ -34,10 +34,10 @@ layers:
   - /
   - ENTER
   - {t: DEL, h: NUMS}
-  - {t: TAB, h: WM}
+  - '&wm_hold_left'
   - {t: SPACE, h: SYMS}
   - {t: RET, h: SYMS}
-  - {t: ESC, h: WM}
+  - '&wm_hold_right'
   - {t: BSPC, h: NUMS}
   NUMS:
   - '1'
@@ -151,7 +151,7 @@ layers:
   - {t: ▽, type: trans}
   - WMS
   - {t: ▽, type: trans}
-  - {type: held}
+  - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -190,7 +190,7 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {type: held}
+  - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
